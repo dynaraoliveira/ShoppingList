@@ -14,6 +14,8 @@
 		A13173C022465512002F713F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13173BF22465512002F713F /* Assets.xcassets */; };
 		A13173C322465512002F713F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A13173C122465512002F713F /* LaunchScreen.storyboard */; };
 		AC607D6322465D8300448609 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC607D6222465D8300448609 /* GoogleService-Info.plist */; };
+		AC607D65224681B400448609 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC607D64224681B400448609 /* ShoppingTableViewController.swift */; };
+		AC607D672246865500448609 /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC607D662246865500448609 /* ShoppingItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		A13173C222465512002F713F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A13173C422465512002F713F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC607D6222465D8300448609 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AC607D64224681B400448609 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
+		AC607D662246865500448609 /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		BB56875C984E76E82C7BDABE /* Pods-ShoppingList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingList.release.xcconfig"; path = "Target Support Files/Pods-ShoppingList/Pods-ShoppingList.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +86,8 @@
 			children = (
 				A13173B822465510002F713F /* AppDelegate.swift */,
 				A13173BA22465510002F713F /* ViewController.swift */,
+				AC607D662246865500448609 /* ShoppingItem.swift */,
+				AC607D64224681B400448609 /* ShoppingTableViewController.swift */,
 				A13173BC22465510002F713F /* Main.storyboard */,
 				A13173BF22465512002F713F /* Assets.xcassets */,
 				A13173C122465512002F713F /* LaunchScreen.storyboard */,
@@ -226,7 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC607D672246865500448609 /* ShoppingItem.swift in Sources */,
 				A13173BB22465510002F713F /* ViewController.swift in Sources */,
+				AC607D65224681B400448609 /* ShoppingTableViewController.swift in Sources */,
 				A13173B922465510002F713F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
