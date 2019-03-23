@@ -29,7 +29,11 @@ class ShoppingTableViewController: UITableViewController {
     }
 
     func listItems() {
-        firestoreListener = firestore.collection(collection).addSnapshotListener(includeMetadataChanges: true){ (snapshot, error) in
+        
+        firestoreListener = firestore.collection(collection)
+            .whereField("quantity", isGreaterThan: 3)
+            .order(by: "quantity", descending: false)
+            .addSnapshotListener(includeMetadataChanges: true){ (snapshot, error) in
             if error != nil {
                 print(error!)
             }
