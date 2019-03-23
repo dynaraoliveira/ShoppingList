@@ -70,4 +70,81 @@ class ShoppingTableViewController: UITableViewController {
         return cell
     }
 
+    @IBAction func add(_ sender: Any) {
+        addEdit()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        addEdit(shoppingItem: shoppingList[indexPath.row])
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            firestore.collection(collection).document(shoppingList[indexPath.row].id).delete { (error) in
+                if error != nil {
+                    print(error!)
+                }
+            }
+        }
+    }
+    
+    func addEdit(shoppingItem: ShoppingItem? = nil) {
+        let title = shoppingItem == nil ? "Adicionar" : "Editar"
+        let message = shoppingItem == nil ? "adicionado" : "editado"
+        
+        let alert = UIAlertController(title: title, message: "Digite abaixo os dados do item a ser \(message)", preferredStyle: .alert)
+        
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Nome"
+            textfield.text = shoppingItem?.name
+        }
+       
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Quantidade"
+            textfield.keyboardType = .numberPad
+            textfield.text = shoppingItem?.quantity.description
+        }
+        
+        let addAction = UIAlertAction(title: title, style: .default) { (_) in
+            guard let name = alert.textFields?.first?.text,
+                let quantity = alert.textFields?.last?.text,
+                !name.isEmpty, !quantity.isEmpty else { return }
+            
+            var item = shoppingItem ?? ShoppingItem()
+            
+            item.name = name
+            item.quantity = Int(quantity) ?? 1
+            
+            self.addItem(item)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func addItem(_ item: ShoppingItem) {
+        let data: [String: Any] = [
+            "name": item.name,
+            "quantity": item.quantity
+        ]
+        
+        if item.id.isEmpty {
+            firestore.collection(collection).addDocument(data: data) { (error) in
+                if error != nil {
+                    print(error!)
+                }
+            }
+        } else {
+            firestore.collection(collection).document(item.id).updateData(data) { (error) in
+                if error != nil {
+                    print(error!)
+                }
+            }
+        }
+        
+    }
 }

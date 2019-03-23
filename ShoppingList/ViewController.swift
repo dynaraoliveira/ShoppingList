@@ -46,8 +46,14 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: animated)
     }
     
+    func removeListener() {
+        if let handle = handle {
+            Auth.auth().removeStateDidChangeListener(handle)
+        }
+    }
+    
     @IBAction func login(_ sender: Any) {
-        handle = nil
+        removeListener()
         
         Auth.auth().signIn(withEmail: tfEmail.text!, password: tfPassword.text!) { (result, error) in
             if error == nil {
@@ -59,7 +65,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func signup(_ sender: Any) {
-        handle = nil
+        removeListener()
         
         Auth.auth().createUser(withEmail: tfEmail.text!, password: tfPassword.text!) { (result, error) in
             if error == nil {

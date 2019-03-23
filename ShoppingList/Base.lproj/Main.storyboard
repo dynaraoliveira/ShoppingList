@@ -118,6 +118,14 @@
                             <outlet property="delegate" destination="rWc-Zy-bRY" id="zyu-eC-8EL"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="3dd-AG-M0t">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dWH-UK-lJt">
+                            <connections>
+                                <action selector="add:" destination="rWc-Zy-bRY" id="hbM-FT-YFe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8da-ne-dta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
